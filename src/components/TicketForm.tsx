@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from 'react'
 import { RepoConfig, Suggestion } from '@/lib/types'
+import { apiUrl } from '@/lib/api'
 
 interface ResolveResult {
   suggestions: Suggestion[]
@@ -66,7 +67,7 @@ export default function TicketForm({ repos, onResult, onClear, hasResult }: Prop
     setError('')
     setLoading(true)
     try {
-      const res = await fetch('/api/resolve', {
+      const res = await fetch(apiUrl('/api/resolve'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

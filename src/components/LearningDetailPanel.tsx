@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Learning, LearningEvent } from '@/lib/types'
+import { apiUrl } from '@/lib/api'
 
 interface Props {
   learning: Learning
@@ -36,7 +37,7 @@ export default function LearningDetailPanel({ learning, onClose, onDismissed }: 
     if (!confirm('Dismiss this learning? It will be excluded from future suggestions.')) return
     setDismissing(true)
     try {
-      const res = await fetch(`/api/learnings/${learning.id}/dismiss`, { method: 'POST' })
+      const res = await fetch(apiUrl(`/api/learnings/${learning.id}/dismiss`), { method: 'POST' })
       const data = await res.json()
       setDismissed(true)
       onDismissed(data.learning)

@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import LearningCard from '@/components/LearningCard'
 import LearningDetailPanel from '@/components/LearningDetailPanel'
 import { Learning, LearningsStats } from '@/lib/types'
+import { apiUrl } from '@/lib/api'
 
 const CATEGORIES = ['all', 'auth', 'config', 'performance', 'deployment', 'network', 'bug', 'other']
 const MIN_CONFIDENCE_OPTIONS = [
@@ -34,7 +35,7 @@ export default function LearningsPage() {
       if (minConfidence) params.set('minConfidence', minConfidence)
       if (showDismissed) params.set('dismissed', 'true')
 
-      const res = await fetch(`/api/learnings?${params}`)
+      const res = await fetch(apiUrl(`/api/learnings?${params}`))
       const data = await res.json()
       setLearnings(data.learnings ?? [])
       setStats(data.stats ?? null)

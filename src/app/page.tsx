@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import TicketForm from '@/components/TicketForm'
 import SuggestionList from '@/components/SuggestionList'
 import { RepoConfig, Suggestion } from '@/lib/types'
+import { apiUrl } from '@/lib/api'
 
 interface ResolveResult {
   suggestions: Suggestion[]
@@ -22,7 +23,7 @@ export default function Home() {
   const [result, setResult] = useState<ResolveResult | null>(null)
 
   useEffect(() => {
-    fetch('/api/repos')
+    fetch(apiUrl('/api/repos'))
       .then((r) => r.json())
       .then((d) => setRepos(d.repos ?? []))
       .catch(() => {})

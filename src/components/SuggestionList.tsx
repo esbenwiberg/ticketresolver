@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Suggestion } from '@/lib/types'
+import { apiUrl } from '@/lib/api'
 
 interface Props {
   suggestions: Suggestion[]
@@ -51,7 +52,7 @@ function SuggestionCard({
   const handleAccept = async () => {
     setLoading(true)
     try {
-      await fetch('/api/feedback', {
+      await fetch(apiUrl('/api/feedback'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
