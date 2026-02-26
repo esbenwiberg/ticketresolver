@@ -1,4 +1,5 @@
 [
   { "slug": "esbenwiberg/hive", "name": "The Hive" },
-  { "slug": "esbenwiberg/ticketresolver", "name": "Ticket Resolver" }
+  { "slug": "esbenwiberg/ticketresolver", "name": "Ticket Resolver" },
+  { "slug": "esbenwiberg/duck", "name": "Duck" }
 ]
